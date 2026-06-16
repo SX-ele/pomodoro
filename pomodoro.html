@@ -7,23 +7,23 @@
 <style>
 /* ========== CSS Variables & Reset ========== */
 :root {
-  --primary: #e74c3c;
-  --primary-light: #f28b82;
-  --primary-dark: #c0392b;
-  --bg: #1a1a2e;
-  --bg-card: #16213e;
-  --bg-input: #0f3460;
-  --text: #eee;
-  --text-secondary: #aab;
-  --border: #2a2a4a;
-  --shadow: 0 8px 32px rgba(0,0,0,0.4);
+  --primary: #c04040;
+  --primary-light: #d4887a;
+  --primary-dark: #a03030;
+  --bg: #e8e3df;
+  --bg-card: #f7f3f0;
+  --bg-input: #ede6e0;
+  --text: #4a4040;
+  --text-secondary: #8a7a70;
+  --border: #d5ccc5;
+  --shadow: 0 8px 32px rgba(0,0,0,0.08);
   --radius: 16px;
   --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
 }
 
-[data-theme="blue"] { --primary: #3498db; --primary-light: #85c1e9; --primary-dark: #2471a3; --bg-input: #1a3a5c; }
-[data-theme="green"] { --primary: #2ecc71; --primary-light: #82e0aa; --primary-dark: #1e8449; --bg-input: #1a4a2a; }
-[data-theme="purple"] { --primary: #9b59b6; --primary-light: #c39bd3; --primary-dark: #7d3c98; --bg-input: #2a1a4a; }
+[data-theme="blue"] { --primary: #5b8cbf; --primary-light: #8ab8d8; --primary-dark: #4a7099; --bg-input: #e8e6ec; }
+[data-theme="green"] { --primary: #5b9a6b; --primary-light: #8cc89a; --primary-dark: #4a7a5a; --bg-input: #e8ece3; }
+[data-theme="purple"] { --primary: #8b6b9e; --primary-light: #b8a0c8; --primary-dark: #6b5080; --bg-input: #ece4ee; }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -36,9 +36,9 @@ body {
   align-items: center;
   justify-content: center;
   background-image:
-    radial-gradient(ellipse at 20% 50%, rgba(231,76,60,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(52,152,219,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 40% 20%, rgba(155,89,182,0.04) 0%, transparent 50%);
+    radial-gradient(ellipse at 20% 50%, rgba(192,64,64,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(91,140,191,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 20%, rgba(139,107,158,0.04) 0%, transparent 50%);
   transition: background-image var(--transition);
 }
 
@@ -48,7 +48,7 @@ body {
   max-width: 95vw;
   background: var(--bg-card);
   border-radius: 24px;
-  box-shadow: var(--shadow), 0 0 0 1px rgba(255,255,255,0.05);
+  box-shadow: var(--shadow), 0 0 0 1px rgba(0,0,0,0.04);
   padding: 28px 24px 20px;
   backdrop-filter: blur(20px);
   border: 1px solid var(--border);
@@ -85,8 +85,8 @@ body {
   transition: color var(--transition);
 }
 .phase-label.work { color: var(--primary-light); }
-.phase-label.short-break { color: #82e0aa; }
-.phase-label.long-break { color: #85c1e9; }
+.phase-label.short-break { color: #5b9a6b; }
+.phase-label.long-break { color: #5b8cbf; }
 
 /* ========== Timer Ring ========== */
 .timer-container {
@@ -113,8 +113,8 @@ body {
   transition: stroke-dashoffset 1s linear, stroke var(--transition);
 }
 .timer-ring .progress-circle.work { stroke: var(--primary); }
-.timer-ring .progress-circle.short-break { stroke: #2ecc71; }
-.timer-ring .progress-circle.long-break { stroke: #3498db; }
+.timer-ring .progress-circle.short-break { stroke: #5b9a6b; }
+.timer-ring .progress-circle.long-break { stroke: #5b8cbf; }
 
 .timer-display {
   position: absolute;
@@ -183,21 +183,21 @@ body {
   background: var(--primary);
   color: #fff;
   font-size: 22px;
-  box-shadow: 0 4px 15px rgba(231,76,60,0.4);
+  box-shadow: 0 4px 15px rgba(192,64,64,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .btn-primary:hover {
-  box-shadow: 0 6px 25px rgba(231,76,60,0.6);
+  box-shadow: 0 6px 25px rgba(192,64,64,0.45);
   transform: translateY(-1px);
 }
 .btn-primary:active { transform: scale(0.92); }
 .btn-primary.paused { animation: pulse 2s infinite; }
 
 @keyframes pulse {
-  0%, 100% { box-shadow: 0 4px 15px rgba(231,76,60,0.4); }
-  50% { box-shadow: 0 4px 30px rgba(231,76,60,0.8); }
+  0%, 100% { box-shadow: 0 4px 15px rgba(192,64,64,0.3); }
+  50% { box-shadow: 0 4px 30px rgba(192,64,64,0.6); }
 }
 
 .btn-secondary {
@@ -234,7 +234,7 @@ body {
 .tab.active {
   background: var(--bg-card);
   color: var(--text);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 .tab:hover:not(.active) { color: var(--text); }
 
@@ -325,8 +325,8 @@ body {
   border-radius: 6px;
   transition: all var(--transition);
 }
-.task-item .btn-icon:hover { color: var(--primary); background: rgba(231,76,60,0.1); }
-.task-item .btn-icon.delete:hover { color: #e74c3c; }
+.task-item .btn-icon:hover { color: var(--primary); background: rgba(192,64,64,0.08); }
+.task-item .btn-icon.delete:hover { color: #c04040; }
 
 .task-item .select-btn {
   font-size: 11px;
@@ -481,7 +481,7 @@ input[type="range"]::-webkit-slider-thumb {
   transition: all var(--transition);
 }
 .theme-dot:hover { transform: scale(1.1); }
-.theme-dot.active { border-color: var(--text); box-shadow: 0 0 12px rgba(255,255,255,0.3); }
+.theme-dot.active { border-color: var(--primary-dark); box-shadow: 0 0 12px rgba(192,64,64,0.25); }
 
 .toggle-row {
   display: flex;
@@ -523,7 +523,7 @@ input[type="range"]::-webkit-slider-thumb {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.3);
   z-index: 100;
   align-items: center;
   justify-content: center;
@@ -684,10 +684,10 @@ input[type="range"]::-webkit-slider-thumb {
     <div class="setting-group">
       <div class="setting-label"><span>主题颜色</span></div>
       <div class="theme-colors">
-        <div class="theme-dot active" style="background:#e74c3c" data-theme="red" onclick="setTheme('red')"></div>
-        <div class="theme-dot" style="background:#3498db" data-theme="blue" onclick="setTheme('blue')"></div>
-        <div class="theme-dot" style="background:#2ecc71" data-theme="green" onclick="setTheme('green')"></div>
-        <div class="theme-dot" style="background:#9b59b6" data-theme="purple" onclick="setTheme('purple')"></div>
+        <div class="theme-dot active" style="background:#c04040" data-theme="red" onclick="setTheme('red')"></div>
+        <div class="theme-dot" style="background:#5b8cbf" data-theme="blue" onclick="setTheme('blue')"></div>
+        <div class="theme-dot" style="background:#5b9a6b" data-theme="green" onclick="setTheme('green')"></div>
+        <div class="theme-dot" style="background:#8b6b9e" data-theme="purple" onclick="setTheme('purple')"></div>
       </div>
     </div>
 
@@ -735,7 +735,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 // ── Constants ───────────────────────────────────────────────────
 const CIRCUMFERENCE = 2 * Math.PI * 90; // ~565.486
-const PHASE_COLORS = { work: 'var(--primary)', 'short-break': '#2ecc71', 'long-break': '#3498db' };
+const PHASE_COLORS = { work: 'var(--primary)', 'short-break': '#5b9a6b', 'long-break': '#5b8cbf' };
 const PHASE_LABELS = { work: '专注时间', 'short-break': '☕ 短休息', 'long-break': '🌴 长休息' };
 const PHASE_ICONS = { work: '🎉', 'short-break': '☕', 'long-break': '🌴' };
 const PHASE_MSGS = {

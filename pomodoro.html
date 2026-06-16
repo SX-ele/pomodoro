@@ -614,6 +614,7 @@ input[type="range"]::-webkit-slider-thumb {
     <button class="btn btn-secondary" id="btnSkip" title="跳过" onclick="skipPhase()">⏭</button>
     <button class="btn btn-primary" id="btnMain" onclick="toggleTimer()">▶</button>
     <button class="btn btn-secondary" id="btnReset" title="重置" onclick="resetTimer()">↺</button>
+    <button class="btn btn-secondary" id="btnPip" title="画中画" onclick="togglePiP()" style="display:none">🖼</button>
   </div>
 
   <!-- Tabs -->
@@ -712,6 +713,17 @@ input[type="range"]::-webkit-slider-thumb {
         <span class="slider"></span>
       </label>
     </div>
+
+    <div class="toggle-row">
+      <div>
+        <div class="toggle-label">🖼 常驻显示</div>
+        <div class="toggle-desc">阻止屏幕休眠 + 画中画浮动计时器</div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="setPersistent" checked onchange="saveSettings()">
+        <span class="slider"></span>
+      </label>
+    </div>
   </div>
 </div>
 
@@ -727,6 +739,10 @@ input[type="range"]::-webkit-slider-thumb {
 
 <!-- Notification Banner -->
 <div class="notification-banner" id="notificationBanner"></div>
+
+<!-- PiP Canvas (hidden, used as video source) -->
+<canvas id="pipCanvas" width="300" height="300" style="display:none"></canvas>
+<video id="pipVideo" style="display:none" playsinline></video>
 
 <script>
 /* ================================================================
@@ -758,6 +774,9 @@ let state = {
   pomoCount: 0,            // completed pomodoros this session
   activeTaskId: null,
   timerInterval: null,
+  wakeLock: null,          // Screen Wake Lock sentinel
+  pipActive: false,        // Picture-in-Picture active flag
+  pipInterval: null,       // PiP canvas redraw interval
 };
 
 // ── Audio Engine ────────────────────────────────────────────────
